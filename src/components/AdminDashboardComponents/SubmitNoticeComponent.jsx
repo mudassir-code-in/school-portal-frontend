@@ -69,7 +69,7 @@ const SubmitNoticeComponent = ({ user }) => {
         }
     };
 
-    // Handle Form Submit (Naya notice create karne ke liye)
+   
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!message.trim() && !image) {
@@ -102,7 +102,7 @@ const SubmitNoticeComponent = ({ user }) => {
                 setImagePreview(null);
             }
         } catch (error) {
-            setErrorStatus(error.response?.data?.message || 'Submit karne me koi gadbad hui!');
+            setErrorStatus(error.response?.data?.message || 'Something went wrong during submission!');
         } finally {
             setLoading(false);
         }

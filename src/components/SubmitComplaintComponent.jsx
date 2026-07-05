@@ -59,7 +59,7 @@ const SubmitComplaintComponent = () => {
                     Register Your Complaint
                 </h2>
                 <p className="mt-2 text-center text-sm text-slate-600">
-                    Apni pareshani yahan share karein, jaldi action liya jayega.
+                    Share your issue here; prompt action will be taken.
                 </p>
             </div>
 
@@ -118,7 +118,7 @@ const SubmitComplaintComponent = () => {
                                     required
                                     value={formData.complaint}
                                     onChange={handleChange}
-                                    placeholder="Apni complaint vistar me likhein..."
+                                    placeholder="Write down the details of your complaint..."
                                     className="appearance-none block w-full px-4 py-3 border border-slate-300 rounded-xl shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm transition duration-150 resize-none"
                                 />
                             </div>

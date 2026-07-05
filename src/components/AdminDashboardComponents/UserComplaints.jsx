@@ -87,10 +87,10 @@ const UserComplaints = () => {
                 {/* Header section */}
                 <div>
                     <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">Admin Complaints Dashboard</h1>
-                    <p className="mt-2 text-sm text-slate-600">Students ki taraf se aayi hui complaints ka pura analytics aur list.</p>
+                    <p className="mt-2 text-sm text-slate-600">A complete list and analytics of complaints received from students.</p>
                 </div>
 
-              
+
                 <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
                     <h2 className="text-lg font-bold text-slate-800 mb-6">Complaints Analytics (Per Teacher)</h2>
 
