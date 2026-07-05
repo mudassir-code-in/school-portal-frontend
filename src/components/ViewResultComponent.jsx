@@ -234,8 +234,8 @@ const ViewResultComponent = () => {
             <h2 className="text-2xl md:text-3xl font-extrabold text-center text-slate-800 mb-8 tracking-tight flex items-center justify-center gap-2">
                 <span>🔍</span> View Student Report Card
             </h2>
-
-          
+            
+            For testing: rollno. 35, class: 8, Name: Adnan 
             <form onSubmit={handleFetchResult} className="flex flex-col gap-4 mb-8 bg-slate-50 p-5 rounded-xl border border-slate-200">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div className="flex flex-col gap-1">
