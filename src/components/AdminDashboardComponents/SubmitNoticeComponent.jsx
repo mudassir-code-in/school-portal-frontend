@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import axios from 'axios'; 
+import axios from 'axios';
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const SubmitNoticeComponent = ({ user }) => {
@@ -8,29 +8,23 @@ const SubmitNoticeComponent = ({ user }) => {
     const [imagePreview, setImagePreview] = useState(null);
     const [loading, setLoading] = useState(false);
 
-
     const [chatMessages, setChatMessages] = useState([]);
     const [errorStatus, setErrorStatus] = useState('');
     const fileInputRef = useRef(null);
 
-   
     useEffect(() => {
         const fetchNotices = async () => {
             try {
-                
                 const response = await axios.get(`${backendUrl}/api/student/get-notice`, {
                     withCredentials: true
                 });
 
- 
                 let resData = response.data?.notice || response.data?.data || response.data;
 
                 if (Array.isArray(resData)) {
-                   
                     setChatMessages([...resData].reverse());
                 }
             } catch (err) {
-               
                 setErrorStatus("Notice not load");
             }
         };
@@ -41,7 +35,6 @@ const SubmitNoticeComponent = ({ user }) => {
         if (!window.confirm("Confirm deletion?")) return;
 
         try {
-           
             const response = await axios.post(
                 `${backendUrl}/api/admin/delete-notice`,
                 { noticeId: id },
@@ -49,7 +42,6 @@ const SubmitNoticeComponent = ({ user }) => {
             );
 
             if (response.status === 200) {
-              
                 setChatMessages((prev) => prev.filter((msg) => msg._id !== id));
                 alert(response.data?.message || "Notice deleted");
             } else {
@@ -69,7 +61,6 @@ const SubmitNoticeComponent = ({ user }) => {
         }
     };
 
-   
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!message.trim() && !image) {
@@ -86,7 +77,6 @@ const SubmitNoticeComponent = ({ user }) => {
         if (image) formData.append('image', image);
 
         try {
-           
             const response = await axios.post(`${backendUrl}/api/admin/submit-notice`, formData, {
                 withCredentials: true,
                 headers: { 'Content-Type': 'multipart/form-data' }
@@ -94,7 +84,6 @@ const SubmitNoticeComponent = ({ user }) => {
 
             if (response.status === 200 || response.status === 201) {
                 if (response.data?.notice) {
-                  
                     setChatMessages((prev) => [response.data.notice, ...prev]);
                 }
                 setMessage('');
@@ -112,7 +101,6 @@ const SubmitNoticeComponent = ({ user }) => {
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
             <div className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200 flex flex-col h-[550px]">
 
-        
                 <div className="bg-indigo-600 p-4 flex items-center gap-3 shrink-0">
                     <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center font-bold text-indigo-600 shadow-sm">
                         AD
@@ -123,7 +111,6 @@ const SubmitNoticeComponent = ({ user }) => {
                     </div>
                 </div>
 
-      
                 <div className="p-4 bg-gray-50 overflow-y-auto flex-1 space-y-4 flex flex-col">
 
                     {chatMessages.length === 0 ? (
@@ -133,7 +120,6 @@ const SubmitNoticeComponent = ({ user }) => {
                     ) : (
                         chatMessages.map((msg, index) => (
                             <div key={msg._id || index} className="flex items-start gap-2.5 group relative">
-                                {/* Profile Avatar */}
                                 <img
                                     src={msg.avatar || 'https://api.dicebear.com/7.x/bottts/svg?seed=Admin'}
                                     alt="avatar"
@@ -141,10 +127,9 @@ const SubmitNoticeComponent = ({ user }) => {
                                 />
 
                                 <div className="flex flex-col w-full max-w-[280px] p-3 bg-white border border-gray-200 rounded-e-xl rounded-es-xl shadow-sm relative">
-               
+
                                     {msg.message && <p className="text-sm font-normal text-gray-900 break-words pr-4">{msg.message}</p>}
 
-                        
                                     {msg.imageUrl && (
                                         <img
                                             src={msg.imageUrl}
@@ -153,10 +138,9 @@ const SubmitNoticeComponent = ({ user }) => {
                                         />
                                     )}
 
-                                   
                                     <button
                                         onClick={() => handleDelete(msg._id)}
-                                        className="absolute top-2 right-2 text-gray-300 hover:text-red-500 transition opacity-0 group-hover:opacity-100 font-bold text-xs bg-gray-50 hover:bg-gray-100 w-5 h-5 flex items-center justify-center rounded-full shadow-xs"
+                                        className="absolute top-2 right-2 text-red-500 md:text-gray-300 md:hover:text-red-500 transition opacity-100 md:opacity-0 md:group-hover:opacity-100 font-bold text-xs bg-gray-50 hover:bg-gray-100 w-5 h-5 flex items-center justify-center rounded-full shadow-xs"
                                         title="Delete Notice"
                                     >
                                         ✕
@@ -166,7 +150,6 @@ const SubmitNoticeComponent = ({ user }) => {
                         ))
                     )}
 
-                    {/* Error Display */}
                     {errorStatus && (
                         <div className="flex justify-center my-2 sticky bottom-0">
                             <span className="px-4 py-1.5 rounded-full text-xs font-semibold shadow-md bg-red-100 text-red-800 border border-red-300">
@@ -176,7 +159,6 @@ const SubmitNoticeComponent = ({ user }) => {
                     )}
                 </div>
 
-                {/* Image Preview Area */}
                 {imagePreview && (
                     <div className="px-4 py-2 bg-indigo-50 border-t border-gray-100 flex items-center justify-between shrink-0">
                         <div className="flex items-center gap-2">
@@ -193,7 +175,6 @@ const SubmitNoticeComponent = ({ user }) => {
                     </div>
                 )}
 
-                {/* Form Input Area */}
                 <form onSubmit={handleSubmit} className="p-3 bg-white border-t border-gray-200 flex items-center gap-2 shrink-0">
                     <button
                         type="button"
