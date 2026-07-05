@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import axios from 'axios';
 
-import Login from './pages/login';
+import Login from './pages/Login';
 import Home from './pages/Home';
 
 import AdminDashboard from './pages/AdminDashboard';
@@ -32,7 +32,7 @@ axios.interceptors.response.use(
       return Promise.reject(error);
     }
 
-    // CONDITION 2: Normal APIs ke liye retry logic
+
     if (error.response && error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
 
