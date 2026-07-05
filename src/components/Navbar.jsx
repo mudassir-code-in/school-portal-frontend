@@ -74,7 +74,7 @@ const Navbar = () => {
                         <button
                             onClick={() => navigate('/student-panel')}
                             className="p-2 rounded-xl bg-blue-600  hover:bg-blue-700 text-white active:scale-95 transition-all duration-200 focus:outline-none"
-                            title="More Settings"
+                            title="Dashboard"
                         >
                             Dashboard
                         </button>
@@ -87,7 +87,7 @@ const Navbar = () => {
                             onClick={() => navigate('/student-panel')}
                             className="p-2 rounded-xl bg-blue-600 text-white"
                         >
-                            Student Panel
+                            Dashboard
                         </button>
 
                         {/* Hamburger */}
