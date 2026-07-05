@@ -19,7 +19,7 @@ const LoginComponent = () => {
         });
 
 
-        window.location.reload();
+      window.location.href = '/home';
       
       
     } catch (error) {

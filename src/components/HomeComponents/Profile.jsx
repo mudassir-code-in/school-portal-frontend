@@ -9,7 +9,7 @@ const Profile = ({ user }) => {
     try {
       const response = await axios.get(`${backendUrl}/api/auth/logout`, { withCredentials: true });
       if (response.data.success) {
-        window.location.reload();
+         window.location.href = '/';
       }
     } catch (error) {
       console.error(error);
