@@ -18,7 +18,7 @@ import SubmitNotice from './pages/SubmitNotice';
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
-axios.defaults.timeout = 5000;
+axios.defaults.timeout = 25000;
 
 
 axios.interceptors.response.use(
